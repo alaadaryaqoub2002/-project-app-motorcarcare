@@ -1,0 +1,49 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Flutter plugin بعد Kotlin
+    id "com.google.gms.google-services"    // Firebase services
+}
+
+android {
+    namespace "com.example.carcare" // ✅ تعريف الـ namespace الجديد
+    compileSdk flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    defaultConfig {
+        applicationId "com.example.carcare" // ✅ معرف التطبيق
+        minSdkVersion 23
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            // استخدم مفاتيح debug مؤقتًا للتجريب
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source "../.."
+}
+
+dependencies {
+    // Firebase Core & خدماته
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    
+    // دعم تعدد الـ dex
+    implementation 'com.android.support:multidex:1.0.3'
+}

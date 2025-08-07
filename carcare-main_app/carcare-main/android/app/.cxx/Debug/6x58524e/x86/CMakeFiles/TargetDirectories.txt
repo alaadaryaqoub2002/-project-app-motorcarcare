@@ -1,0 +1,2 @@
+C:/Users/alaad/Downloads/carcare-main19-5-2025/carcare-main/android/app/.cxx/Debug/6x58524e/x86/CMakeFiles/edit_cache.dir
+C:/Users/alaad/Downloads/carcare-main19-5-2025/carcare-main/android/app/.cxx/Debug/6x58524e/x86/CMakeFiles/rebuild_cache.dir

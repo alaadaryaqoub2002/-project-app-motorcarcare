@@ -1,0 +1,35 @@
+buildscript {
+    ext.kotlin_version = '1.8.0' // أو آخر إصدار مستقر
+
+    repositories {
+        google()
+        mavenCentral() // ✅ استبدل jcenter() بـ mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.gms:google-services:4.4.2' // حافظ عليه إن كنت تستخدم Firebase
+        classpath 'com.android.tools.build:gradle:7.2.1' // ⚠️ تجنب Gradle 8.0.0 مؤقتًا مع Flutter
+
+        // إذا كنت تستخدم Kotlin:
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral() // ✅ نفس التعديل هنا
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
